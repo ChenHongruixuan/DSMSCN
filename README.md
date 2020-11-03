@@ -37,6 +37,14 @@ title = {{Deep Siamese Multi-scale Convolutional Network for Change Detection in
 year = {2019}
 }
 
+@misc{chen2020change,
+title={Change Detection in Multi-temporal VHR Images Based on Deep Siamese Multi-scale Convolutional Networks}, 
+author={Hongruixuan Chen and Chen Wu and Bo Du and Liangpei Zhang},
+year={2020},
+eprint={1906.11479},
+archivePrefix={arXiv},
+primaryClass={eess.IV}
+}
 ```
 
 ## Q & A
