@@ -1,0 +1,1 @@
+# Supervised Change Detection Architecture
