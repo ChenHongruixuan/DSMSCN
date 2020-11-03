@@ -1,7 +1,7 @@
 # DSMSCN
 Tensorflow implementation for [Change Detection in Multi-temporal VHR Images Based on Deep Siamese Multi-scale Convolutional Neural Networks.](https://arxiv.org/abs/1906.11479)
 
-<div align=center><img src="./Fig/DSMSCN.png" width="25.8%" height="25.8%">      <img src="./Fig/DSMSFCN.png" width="50%" height="50%"></div><p align="center">Left: DSMSCN, right: DSMSFCN</p>
+<div align=center><img src="./Fig/DSMSCN.png" width="25.8%" height="25.8%">      <img src="./Fig/DSMSFCN.png" width="50%" height="50%"></div><p align="center">Left: DSMS-CN, right: DSMS-FCN</p>
 
 
 
