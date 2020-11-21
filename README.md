@@ -19,8 +19,9 @@ Very-high-resolution (VHR) images can provide abundant ground details and spatia
 ## Requirements
 ```
 tensorflow_gpu==1.9.0
-opencv==3.4.0
-numpy==1.14.0
+keras==2.2.0
+opencv==3.1.1
+numpy==1.19.1
 ```
 
 ## Citation

@@ -71,7 +71,7 @@ def train_model():
         binary_change_map[idx_1] = 255
         binary_change_map[idx_2] = 0
 
-        conf_mat, overall_acc, kappa = assess_accuracy(
+        conf_mat, overall_acc, kappa = accuracy_assessment(
             gt_changed=np.reshape(255 * test_label, (test_label.shape[1], test_label.shape[2])),
             gt_unchanged=np.reshape(255. - 255 * test_label, (test_label.shape[1], test_label.shape[2])),
             changed_map=binary_change_map)
