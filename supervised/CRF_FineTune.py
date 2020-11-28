@@ -8,15 +8,15 @@ import numpy as np
 import pydensecrf.densecrf as dcrf
 from keras.models import load_model
 from pydensecrf.utils import create_pairwise_bilateral, create_pairwise_gaussian
-import DSMSFCN.acc_util as au
-from acc_ass import assess_accuracy
-from chrx_util.net_util import weight_binary_cross_entropy
+import .acc_util as au
+from .acc_ass import accuracy_assessment
+from .net_util import weight_binary_cross_entropy
 from keras.layers import Lambda
 import keras.backend as K
-from DSMSFCN.seg_model.MyModel.SiameseInception_Keras import SiameseInception
+from .seg_model.MyModel.SiameseInception_Keras import SiameseInception
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_path', default='data/ACD', help='data path')
+parser.add_argument('--data_path', default='./data/ACD', help='data path')
 parser.add_argument('--data_set_name', default='Szada', help='dataset name')
 # basic params
 FLAGS = parser.parse_args()
@@ -34,7 +34,7 @@ def fine_tune_result():
     test_label = np.reshape(test_label, (test_label.shape[0], test_label.shape[1], test_label.shape[2]))
     # test = np.concatenate([test_X, test_Y], axis=-1)
 
-    # MS_model = load_model("best_model.h5",
+    # MS_model = load_model("393_model.h5",
     #                       custom_objects={
     #                           'weight_binary_cross_entropy': weight_binary_cross_entropy,
     #                           'Recall': au.Recall,
@@ -45,7 +45,7 @@ def fine_tune_result():
     #
     Network = SiameseInception()
     MS_model = Network.get_model(input_size=[None, None, 3])
-    MS_model.load_weights("best_model.h5", by_name=True)
+    MS_model.load_weights("./model_param/ACD/Szada/DSMSFCN/27_model.h5", by_name=True)
     MS_model.compile(optimizer='Adam', loss=weight_binary_cross_entropy,
                      metrics=['accuracy', au.Recall, au.Precision, au.F1_score])
     loss, acc, sen, spe, F1 = MS_model.evaluate(x=[test_X, test_Y], y=test_label, batch_size=1)
@@ -54,8 +54,8 @@ def fine_tune_result():
     for i in range(0, 1):
         change_prob = MS_model.predict([test_X, test_Y])
     toc = time.time()
-    change_prob_2 = np.array(255 * change_prob,dtype=np.uint8)
-   
+    change_prob_2 = np.array(255 * change_prob, dtype=np.uint8)
+    cv.imwrite('CIM.bmp', change_prob_2[0])
 
     print('network time: ', (toc - tic))
 
@@ -70,7 +70,7 @@ def fine_tune_result():
     binary_change_map[idx_1] = 255
     binary_change_map[idx_2] = 0
 
-    conf_mat, overall_acc, kappa = assess_accuracy(
+    conf_mat, overall_acc, kappa = accuracy_assessment(
         gt_changed=np.reshape(255 * test_label, (test_label.shape[0], test_label.shape[1])),
         gt_unchanged=np.reshape(255. - 255 * test_label, (test_label.shape[0], test_label.shape[1])),
         changed_map=binary_change_map)
@@ -131,7 +131,7 @@ def fine_tune_result():
     res[idx_1] = 255
     res[idx_2] = 0
     cv.imwrite('another_result.bmp', res)
-    conf_mat, overall_acc, kappa = assess_accuracy(
+    conf_mat, overall_acc, kappa = accuracy_assessment(
         gt_changed=np.reshape(255 * test_label, (test_label.shape[0], test_label.shape[1])),
         gt_unchanged=np.reshape(255. - 255 * test_label, (test_label.shape[0], test_label.shape[1])),
         changed_map=res)

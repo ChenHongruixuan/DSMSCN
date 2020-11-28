@@ -1,0 +1,62 @@
+epoch 0, train loss is 0.2549,  train sen is 0.0149, train spe is 0.0305, train F1 is nan, train acc is 0.1269
+epoch 0, test loss is 0.4073,  test sen is 0.0000, test spe is 0.0000, test F1 is nan, test acc is 0.9416, test kappa is -0.0000, 
+epoch 1, train loss is 0.1887,  train sen is 0.0000, train spe is 0.0301, train F1 is nan, train acc is 0.2440
+epoch 1, test loss is 0.2746,  test sen is 0.0000, test spe is 0.0000, test F1 is nan, test acc is 0.9417, test kappa is 0.0000, 
+epoch 2, train loss is 0.1503,  train sen is 0.0000, train spe is 0.0216, train F1 is nan, train acc is 0.2381
+epoch 2, test loss is 0.2037,  test sen is 0.0000, test spe is 0.0000, test F1 is nan, test acc is 0.9417, test kappa is 0.0000, 
+epoch 3, train loss is 0.1304,  train sen is 0.0000, train spe is 0.1474, train F1 is nan, train acc is 0.2121
+epoch 3, test loss is 0.1902,  test sen is 0.0002, test spe is 1.0000, test F1 is 0.0004, test acc is 0.9417, test kappa is 0.0004, 
+epoch 4, train loss is 0.1202,  train sen is 0.0005, train spe is 0.5837, train F1 is nan, train acc is 0.1884
+epoch 4, test loss is 0.1827,  test sen is 0.0036, test spe is 0.6636, test F1 is 0.0071, test acc is 0.9418, test kappa is 0.0065, 
+epoch 5, train loss is 0.1150,  train sen is 0.0026, train spe is 0.6621, train F1 is nan, train acc is 0.1596
+epoch 5, test loss is 0.1775,  test sen is 0.0093, test spe is 0.6161, test F1 is 0.0184, test acc is 0.9419, test kappa is 0.0167, 
+epoch 6, train loss is 0.1079,  train sen is 0.0088, train spe is 0.7231, train F1 is nan, train acc is 0.1440
+epoch 6, test loss is 0.1827,  test sen is 0.0282, test spe is 0.5792, test F1 is 0.0538, test acc is 0.9421, test kappa is 0.0486, 
+epoch 7, train loss is 0.1036,  train sen is 0.0313, train spe is 0.7545, train F1 is nan, train acc is 0.1124
+epoch 7, test loss is 0.1766,  test sen is 0.0851, test spe is 0.5452, test F1 is 0.1472, test acc is 0.9425, test kappa is 0.1336, 
+epoch 8, train loss is 0.1005,  train sen is 0.0907, train spe is 0.7373, train F1 is 0.1462, train acc is 0.0960
+epoch 8, test loss is 0.1637,  test sen is 0.1978, test spe is 0.5433, test F1 is 0.2900, test acc is 0.9435, test kappa is 0.2672, 
+epoch 9, train loss is 0.1000,  train sen is 0.1605, train spe is 0.7272, train F1 is 0.2399, train acc is 0.0835
+epoch 9, test loss is 0.1600,  test sen is 0.2674, test spe is 0.5496, test F1 is 0.3598, test acc is 0.9445, test kappa is 0.3344, 
+epoch 10, train loss is 0.0922,  train sen is 0.2274, train spe is 0.7139, train F1 is 0.3165, train acc is 0.0705
+epoch 10, test loss is 0.1541,  test sen is 0.3702, test spe is 0.5306, test F1 is 0.4361, test acc is 0.9441, test kappa is 0.4077, 
+epoch 11, train loss is 0.0902,  train sen is 0.2813, train spe is 0.6909, train F1 is 0.3693, train acc is 0.0604
+epoch 11, test loss is 0.1560,  test sen is 0.4616, test spe is 0.5070, test F1 is 0.4832, test acc is 0.9424, test kappa is 0.4528, 
+epoch 12, train loss is 0.0900,  train sen is 0.3243, train spe is 0.6717, train F1 is 0.4055, train acc is 0.0555
+epoch 12, test loss is 0.1538,  test sen is 0.4727, test spe is 0.5028, test F1 is 0.4873, test acc is 0.9420, test kappa is 0.4566, 
+epoch 13, train loss is 0.0911,  train sen is 0.3353, train spe is 0.6395, train F1 is 0.4127, train acc is 0.0629
+epoch 13, test loss is 0.1461,  test sen is 0.4317, test spe is 0.5330, test F1 is 0.4770, test acc is 0.9448, test kappa is 0.4482, 
+epoch 14, train loss is 0.0870,  train sen is 0.3401, train spe is 0.6627, train F1 is 0.4209, train acc is 0.0453
+epoch 14, test loss is 0.1464,  test sen is 0.4937, test spe is 0.5221, test F1 is 0.5075, test acc is 0.9441, test kappa is 0.4779, 
+epoch 15, train loss is 0.0849,  train sen is 0.3699, train spe is 0.6634, train F1 is 0.4458, train acc is 0.0391
+epoch 15, test loss is 0.1508,  test sen is 0.5272, test spe is 0.4967, test F1 is 0.5115, test acc is 0.9412, test kappa is 0.4803, 
+epoch 16, train loss is 0.0836,  train sen is 0.3882, train spe is 0.6599, train F1 is 0.4598, train acc is 0.0388
+epoch 16, test loss is 0.1562,  test sen is 0.5618, test spe is 0.4582, test F1 is 0.5048, test acc is 0.9357, test kappa is 0.4708, 
+epoch 17, train loss is 0.0818,  train sen is 0.4033, train spe is 0.6473, train F1 is 0.4711, train acc is 0.0323
+epoch 17, test loss is 0.1572,  test sen is 0.5917, test spe is 0.4714, test F1 is 0.5248, test acc is 0.9375, test kappa is 0.4917, 
+epoch 18, train loss is 0.0794,  train sen is 0.4195, train spe is 0.6563, train F1 is 0.4858, train acc is 0.0322
+epoch 18, test loss is 0.1462,  test sen is 0.5454, test spe is 0.4970, test F1 is 0.5201, test acc is 0.9413, test kappa is 0.4889, 
+epoch 19, train loss is 0.0794,  train sen is 0.4230, train spe is 0.6588, train F1 is 0.4886, train acc is 0.0296
+epoch 19, test loss is 0.1567,  test sen is 0.6110, test spe is 0.4668, test F1 is 0.5293, test acc is 0.9366, test kappa is 0.4959, 
+epoch 20, train loss is 0.0778,  train sen is 0.4424, train spe is 0.6571, train F1 is 0.5047, train acc is 0.0292
+epoch 20, test loss is 0.1503,  test sen is 0.5733, test spe is 0.4987, test F1 is 0.5334, test acc is 0.9415, test kappa is 0.5023, 
+epoch 21, train loss is 0.0754,  train sen is 0.4497, train spe is 0.6683, train F1 is 0.5138, train acc is 0.0213
+epoch 21, test loss is 0.1498,  test sen is 0.6043, test spe is 0.4725, test F1 is 0.5303, test acc is 0.9375, test kappa is 0.4974, 
+epoch 22, train loss is 0.0752,  train sen is 0.4563, train spe is 0.6472, train F1 is 0.5150, train acc is 0.0247
+epoch 22, test loss is 0.1681,  test sen is 0.6837, test spe is 0.4484, test F1 is 0.5416, test acc is 0.9325, test kappa is 0.5068, 
+epoch 23, train loss is 0.0727,  train sen is 0.4694, train spe is 0.6633, train F1 is 0.5278, train acc is 0.0221
+epoch 23, test loss is 0.1477,  test sen is 0.5825, test spe is 0.5038, test F1 is 0.5403, test acc is 0.9422, test kappa is 0.5096, 
+epoch 24, train loss is 0.0712,  train sen is 0.4759, train spe is 0.6792, train F1 is 0.5378, train acc is 0.0279
+epoch 24, test loss is 0.1585,  test sen is 0.6756, test spe is 0.4457, test F1 is 0.5371, test acc is 0.9320, test kappa is 0.5021, 
+epoch 25, train loss is 0.0695,  train sen is 0.4890, train spe is 0.6720, train F1 is 0.5457, train acc is 0.0223
+epoch 25, test loss is 0.1520,  test sen is 0.6387, test spe is 0.4721, test F1 is 0.5429, test acc is 0.9372, test kappa is 0.5100, 
+epoch 26, train loss is 0.0693,  train sen is 0.4910, train spe is 0.6983, train F1 is 0.5488, train acc is 0.0194
+epoch 26, test loss is 0.1452,  test sen is 0.5693, test spe is 0.5033, test F1 is 0.5343, test acc is 0.9421, test kappa is 0.5035, 
+epoch 27, train loss is 0.0687,  train sen is 0.4910, train spe is 0.6866, train F1 is 0.5440, train acc is 0.0208
+epoch 27, test loss is 0.1369,  test sen is 0.5139, test spe is 0.5375, test F1 is 0.5254, test acc is 0.9458, test kappa is 0.4967, 
+epoch 28, train loss is 0.0651,  train sen is 0.5076, train spe is 0.7037, train F1 is 0.5666, train acc is 0.0179
+epoch 28, test loss is 0.1472,  test sen is 0.5853, test spe is 0.4937, test F1 is 0.5356, test acc is 0.9408, test kappa is 0.5043, 
+epoch 29, train loss is 0.0643,  train sen is 0.5027, train spe is 0.7174, train F1 is 0.5656, train acc is 0.0194
+epoch 29, test loss is 0.1456,  test sen is 0.5579, test spe is 0.5036, test F1 is 0.5294, test acc is 0.9421, test kappa is 0.4986, 
+epoch 30, train loss is 0.0633,  train sen is 0.5020, train spe is 0.7135, train F1 is 0.5656, train acc is 0.0185
+epoch 30, test loss is 0.1609,  test sen is 0.6584, test spe is 0.4573, test F1 is 0.5397, test acc is 0.9345, test kappa is 0.5056, 

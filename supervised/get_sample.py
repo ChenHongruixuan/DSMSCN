@@ -5,8 +5,8 @@ import numpy as np
 
 
 def calculate_weight():
-    train_path = 'D:/Workspace/Python/RSExperiment/Multi_Temp_Conf/data/Szada/train'
-    test_path = 'D:/Workspace/Python/RSExperiment/Multi_Temp_Conf/data/Szada/test'
+    train_path = './data/ACD/Szada/train'
+    test_path = './data/ACD/Szada/test'
     all_count = 0
     true_count = 0
     for file_name in os.listdir(train_path):
@@ -38,7 +38,7 @@ def calculate_weight():
 
 
 def read_data():
-    path = 'D:/Workspace/Python/RSExperiment/Multi_Temp_Conf/data/Szada/train'
+    path = './data/ACD/Szada/train'
     train_img_1 = []
     train_img_2 = []
     train_label = []

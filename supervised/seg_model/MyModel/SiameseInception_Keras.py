@@ -43,15 +43,17 @@ class SiameseInception(object):
                          kernel_initializer='he_normal', name='Conv_1')(inputs)
         layer_1 = Conv2D(16, kernel_size=3, strides=[1, 1], activation='relu', padding='same',
                          kernel_initializer='he_normal', name='Conv_2')(layer_1)
+        # layer_1 = BatchNormalization()(layer_1)
         feature_1 = layer_1
         layer_1 = MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='Max_Pool_1')(layer_1)
+        # drop_layer_1 = Dropout(0.2)(layer_1)
 
         # (B, H/2, W/2, 16) --> (B, H/4, W/4, 32)
         layer_2 = Conv2D(32, kernel_size=3, strides=[1, 1], activation='relu', padding='same',
                          kernel_initializer='he_normal', name='Conv_3')(layer_1)
         layer_2 = Conv2D(32, kernel_size=3, strides=[1, 1], activation='relu', padding='same',
                          kernel_initializer='he_normal', name='Conv_4')(layer_2)
-
+        #  layer_2 = BatchNormalization()(layer_2)
         feature_2 = layer_2
         layer_2 = Dropout(0.2)(layer_2)
         layer_2 = MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='Max_Pool_2')(layer_2)
@@ -59,7 +61,10 @@ class SiameseInception(object):
         # (B, H/4, W/4, 32) --> (B, H/8, W/8, 64)
         layer_3 = self._Inception_model_2(inputs=layer_2, strides=[1, 1], data_format='NHWC')
         layer_3 = self._Inception_model_1(inputs=layer_3, strides=[1, 1], data_format='NHWC')
-        
+        # layer_3 = self._Inception_model_1(inputs=layer_3, strides=[1, 1], data_format='NHWC')
+        # layer_3 = Conv2D(64, kernel_size=1, strides=[1, 1], padding='same',
+                         # kernel_initializer='he_normal', name='Conv_111')(layer_3)
+        # layer_3 = BatchNormalization()(layer_3)
         feature_3 = layer_3
         layer_3 = Dropout(0.4)(layer_3)
         layer_3 = MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='Max_Pool_3')(layer_3)
@@ -67,7 +72,10 @@ class SiameseInception(object):
         # (B, H/8, W/8, 64) --> (B, H/16, W/16, 128)
         layer_4 = self._Inception_model_2(inputs=layer_3, strides=[1, 1], data_format='NHWC')
         layer_4 = self._Inception_model_1(inputs=layer_4, strides=[1, 1], data_format='NHWC')
-       
+        # layer_4 = self._Inception_model_1(inputs=layer_4, strides=[1, 1], data_format='NHWC')
+        # layer_4 = Conv2D(128, kernel_size=1, strides=[1, 1], padding='same',
+                        #  kernel_initializer='he_normal', name='Conv_112')(layer_4)
+        # layer_4 = BatchNormalization()(layer_4)
         feature_4 = layer_4
         layer_4 = Dropout(0.5)(layer_4)
         net = MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='Max_Pool_4')(layer_4)
@@ -79,12 +87,16 @@ class SiameseInception(object):
         layer_1 = Conv2DTranspose(128, 2, activation='relu', padding='same', kernel_initializer='he_normal')(
             UpSampling2D(size=(2, 2))(inputs))
 
+        # attention_1 = self.Attention_layer(layer_1)
+        #  diff_fea_4 = Multiply()([attention_1, diff_fea_4])
         concat_layer_1 = Concatenate()([layer_1, diff_fea_4])
 
+        # layer_1 = Conv2D(128, 3, strides=[1, 1], activation='relu', padding='same', kernel_initializer='he_normal')(
+        #     concat_layer_1)
 
         layer_1 = Conv2D(128, 3, strides=[1, 1], activation='relu', padding='same', kernel_initializer='he_normal')(
             concat_layer_1)
-
+        # layer_1 = BatchNormalization()(layer_1)
         layer_1 = Dropout(0.5)(layer_1)
         layer_1 = Conv2D(64, 3, strides=[1, 1], activation='relu', padding='same', kernel_initializer='he_normal')(
             layer_1)
@@ -94,27 +106,39 @@ class SiameseInception(object):
                                   kernel_initializer='he_normal')(
             UpSampling2D(size=(2, 2))(layer_1))
 
+        # attention_2 = self.Attention_layer(layer_2)
+        # diff_fea_3 = Multiply()([attention_2, diff_fea_3])
         concat_layer_2 = Concatenate()([layer_2, diff_fea_3])
 
-      
+        # layer_2 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(
+        #     concat_layer_2)
         layer_2 = Conv2D(64, 3, activation='relu', padding='same', kernel_initializer='he_normal')(concat_layer_2)
+        # layer_2 = BatchNormalization()(layer_2)
         layer_2 = Conv2D(32, 3, activation='relu', padding='same', kernel_initializer='he_normal')(layer_2)
         drop_layer_2 = Dropout(0.4)(layer_2)
         # (B, H/4, W/4, 32) --> (B, H/2, W/2, 16)
         layer_3 = Conv2DTranspose(32, 2, activation='relu', padding='same', kernel_initializer='he_normal')(
             UpSampling2D(size=(2, 2))(drop_layer_2))
 
+        # attention_3 = self.Attention_layer(layer_3)
+        # diff_fea_2 = Multiply()([attention_3, diff_fea_2])
         concat_layer_3 = Concatenate()([layer_3, diff_fea_2])
 
         layer_3 = Conv2D(32, 3, activation='relu', padding='same', kernel_initializer='he_normal')(concat_layer_3)
+        # layer_3 = BatchNormalization()(layer_3)
         layer_3 = Conv2D(16, 3, activation='relu', padding='same', kernel_initializer='he_normal')(layer_3)
         drop_layer_3 = Dropout(0.3)(layer_3)
         # (B, H/2, W/2, 16) --> (B, H, W, 1)
         layer_4 = Conv2DTranspose(16, 2, activation='relu', padding='same', kernel_initializer='he_normal')(
             UpSampling2D(size=(2, 2))(drop_layer_3))
 
+        # attention_4 = self.Attention_layer(layer_4)
+        # diff_fea_1 = Multiply()([attention_4, diff_fea_1])
         concat_layer_4 = Concatenate()([layer_4, diff_fea_1])
-       
+        # drop_layer_4 = Dropout(0.2)(concat_layer_4)
+        # layer_4 = Conv2D(32, 3, activation='relu', padding='same', kernel_initializer='he_normal')(
+        #     concat_layer_4)
+        # layer_3 = BatchNormalization()(layer_3)
         layer_4 = Conv2D(16, 3, activation='relu', padding='same', kernel_initializer='he_normal')(concat_layer_4)
         logits = Conv2D(1, 3, activation='sigmoid', padding='same', kernel_initializer='he_normal')(layer_4)
         logits = Lambda(self.squeeze)(logits)
@@ -129,7 +153,7 @@ class SiameseInception(object):
     def Abs_layer(self, tensor):
         return Lambda(K.abs)(tensor)
 
-   
+
     def Negative_layer(self, tensor):
         return Lambda(self.negative)(tensor)
 
@@ -143,6 +167,7 @@ class SiameseInception(object):
         :param data_format: str
         :return: net, (B, H, W, C)
         """
+        # attention = tf.Variable(initial_value=[1, 1, 1, 1], dtype=tf.float32)
         if data_format == 'NHWC':
             inputs_channel = inputs.get_shape().as_list()[-1]
 
@@ -154,11 +179,11 @@ class SiameseInception(object):
                                padding='same',
                                kernel_initializer='he_normal')(inputs)
         # 3x3 Conv
-        branch_33conv = Conv2D(inputs_channel // 4, kernel_size=1, strides=[1, 1], activation='relu', padding='same',
-                               kernel_initializer='he_normal')(inputs)
+        # branch_33conv = Conv2D(inputs_channel // 4, kernel_size=1, strides=[1, 1], activation='relu', padding='same',
+        #                        kernel_initializer='he_normal')(inputs)
         branch_33conv = Conv2D(inputs_channel // 2, kernel_size=3, strides=strides, activation='relu',
                                padding='same',
-                               kernel_initializer='he_normal')(branch_33conv)
+                               kernel_initializer='he_normal')(inputs)
         # use two 3x3 conv layer to replace 5x5 conv layer, which can reduce parameter size and improve nonlinear
         branch_55conv = Conv2D(inputs_channel // 4, kernel_size=1, strides=strides, activation='relu',
                                padding='same',
@@ -169,10 +194,12 @@ class SiameseInception(object):
         branch_55conv = Conv2D(inputs_channel // 8, kernel_size=3, strides=strides, activation='relu',
                                padding='same',
                                kernel_initializer='he_normal')(branch_55conv)
+        # branch_55conv = Multiply()([attention[2], branch_55conv])
         # Max Pool
         branch_pool = MaxPooling2D(pool_size=[3, 3], strides=strides, padding='same')(inputs)
         branch_pool = Conv2D(inputs_channel // 8, kernel_size=[1, 1], strides=strides, activation='relu',
                              padding='same', kernel_initializer='he_normal')(branch_pool)
+        # branch_pool = Multiply()([attention[3], branch_pool])
 
         net = Concatenate()([branch_11conv, branch_33conv, branch_55conv, branch_pool])
 
@@ -185,6 +212,7 @@ class SiameseInception(object):
         :param data_format: str
         :return: net, (B, H, W, 2 * C)
         """
+        # attention = tf.Variable(initial_value=[1, 1, 1, 1], dtype=tf.float32)
         if data_format == 'NHWC':
             inputs_channel = inputs.get_shape().as_list()[-1]
             concat_dim = 3
@@ -194,14 +222,15 @@ class SiameseInception(object):
         # 1x1 Conv
         branch_11conv = Conv2D(inputs_channel // 2, 1, strides=strides, activation='relu', padding='same',
                                kernel_initializer='he_normal')(inputs)
+        # branch_11conv = Multiply()([attention[0], branch_11conv])
         # 3x3 Conv
-        branch_33conv = Conv2D(inputs_channel // 4, 1, strides=strides, activation='relu', padding='same',
-                              kernel_initializer='he_normal')(inputs)
+        # branch_33conv = Conv2D(inputs_channel // 2, 1, strides=strides, activation='relu', padding='same',
+        #                        kernel_initializer='he_normal')(inputs)
         branch_33conv = Conv2D(inputs_channel, 3, strides=strides, activation='relu', padding='same',
-                               kernel_initializer='he_normal')(branch_33conv)
+                               kernel_initializer='he_normal')(inputs)
         # use two 3x3 conv layer to replace 5x5 conv layer, which can reduce parameter size and improve nonlinear
 
-        branch_55conv = Conv2D(inputs_channel // 4, 1, strides=strides, activation='relu', padding='same',
+        branch_55conv = Conv2D(inputs_channel // 2, 1, strides=strides, activation='relu', padding='same',
                                kernel_initializer='he_normal')(inputs)
 
         branch_55conv = Conv2D(inputs_channel // 4, 3, strides=strides, activation='relu', padding='same',
@@ -212,9 +241,11 @@ class SiameseInception(object):
         branch_pool = MaxPooling2D(pool_size=[3, 3], strides=strides, padding='same')(inputs)
         branch_pool = Conv2D(inputs_channel // 4, 1, strides=strides, activation='relu', padding='same',
                              kernel_initializer='he_normal')(branch_pool)
+        # branch_pool = Multiply()([attention[3], branch_pool])
         net = Concatenate(axis=concat_dim)([branch_11conv, branch_33conv, branch_55conv, branch_pool])
 
         return net
+
 
     def Expand_Dim_Layer(self, tensor):
         def expand_dim(tensor):

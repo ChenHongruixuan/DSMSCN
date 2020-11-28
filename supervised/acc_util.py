@@ -1,11 +1,5 @@
 import keras.backend as K
-import imageio
 
-import numpy as np
-from sklearn.metrics import roc_curve
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import cohen_kappa_score
-from sklearn.metrics import accuracy_score
 
 def Recall(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
