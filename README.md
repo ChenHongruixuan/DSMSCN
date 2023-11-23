@@ -25,7 +25,7 @@ numpy==1.19.1
 ```
 
 ## Dataset
-The datasets WH and HY used in our paper for unsupervised change detection has been open-sourced! You can download them [here](http://sigma.whu.edu.cn/resource.php).  
+The datasets WH and HY used in our paper for unsupervised change detection have been open-sourced! You can download them [here](http://sigma.whu.edu.cn/resource.php).  
 
 The SZTAKI dataset for superivsed change detection can be downloaded [here](http://mplab.sztaki.hu/remotesensing/airchange_benchmark.html). 
 
